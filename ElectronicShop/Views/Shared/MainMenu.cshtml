@@ -1,0 +1,42 @@
+﻿@model List<Model.EF.Menu>
+
+<div class="container">
+    <div class="w3ls_logo_products_left">
+        <h1><a href="/" rel="nofollow"><span>Electronic</span>Shop</a></h1>
+    </div>
+    <div class="w3ls_logo_products_left1">
+        <ul class="special_items">
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.Link" target="@item.Target">@item.Text</a><span>&emsp;    </span></li>
+            }
+
+        </ul>
+    </div>
+    <div class="w3ls_logo_products_left1">
+        <ul class="phone_email">          
+            <li>
+                @{
+                    var session = (UserLogin)Session[ElectronicShop.Common.CommonConstants.USER_SESSION];
+                }
+                @if (session == null)
+                {
+                    <ul class="dropdown-menu drp-mnu">
+                        @foreach (var item in Model)
+                        {
+                            <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+                        }
+                    </ul>
+                }
+                else
+                {
+            <ul>
+                <li>Xin chào: @session.UserName</li>
+                <li>@Html.ActionLink("Thoát", "Logout", "User")</li>
+            </ul>
+                }
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"> </div>
+</div>

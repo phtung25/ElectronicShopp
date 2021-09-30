@@ -1,0 +1,223 @@
+﻿<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/Assets/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="~/Assets/client/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="~/Assets/client/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='~/Assets/client/fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='~/Assets/client/fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Assets/client/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Assets/client/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    @*Layout của chi tiết sản phẩm*@
+    <link href="~/Assets/single/css/styles.css" rel='stylesheet' type='text/css' />
+    @*<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Dorsa' rel='stylesheet' type='text/css'>*@
+    @*<script type="text/javascript" src="~/Assets/single/js/jquery-1.11.1.min.js"></script>*@
+    <!-- start menu -->
+    @*<link href="~/Assets/single/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />*@
+    <script type="text/javascript" src="~/Assets/single/js/megamenu.js"></script>
+    @*<script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>*@
+    @*<script src="~/Assets/single/js/jquery.easydropdown.js"></script>*@
+    <script src="~/Assets/single/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    @*<script src="~/Assets/single/js/simpleCart.min.js"></script>*@
+</head>
+
+<body>
+    <!-- header -->
+    <div class="agileits_header">
+        @{ Html.RenderAction("TopMenu", "Home");}
+    </div>
+    <!-- script-for sticky-nav -->
+    <script>
+        $(document).ready(function () {
+            var navoffeset = $(".agileits_header").offset().top;
+            $(window).scroll(function () {
+                var scrollpos = $(window).scrollTop();
+                if (scrollpos >= navoffeset) {
+                    $(".agileits_header").addClass("fixed");
+                } else {
+                    $(".agileits_header").removeClass("fixed");
+                }
+            });
+
+        });
+    </script>
+    <!-- //script-for sticky-nav -->
+    <div class="logo_products">
+        @{Html.RenderAction("MainMenu", "Home"); }
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner">
+        <div class="w3l_banner_nav_left">
+            <nav class="navbar nav_bottom">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header nav_2">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    @{ Html.RenderAction("ProductCategory", "Product");}
+                </div>
+            </nav>
+        </div>
+        @*@RenderSection("slide", required: false)*@
+        <div class="w3l_banner_nav_right">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="~/Assets/client/images/1slide.jpg" style="height: 650px" />
+                        </li>
+                        <li>
+
+                            <img src="~/Assets/client/images/2slide.jpg" style="height: 650px"/>
+                        </li>
+                        <li>
+
+                            <img src="~/Assets/client/images/3slide.jpg" style="height: 650px"/>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- flexSlider -->
+            <link rel="stylesheet" href="~/Assets/client/css/flexslider.css" type="text/css" media="screen" property="" />
+            <script defer src="~/Assets/client/js/jquery.flexslider.js"></script>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        start: function (slider) {
+                            $('body').removeClass('loading');
+                        }
+                    });
+                });
+            </script>
+            <!-- //flexSlider -->
+        </div>
+        <div class="clearfix"></div>
+    </div>
+        <!-- banner -->
+        @RenderBody()
+        <!-- newsletter -->
+        <div class="newsletter">
+            <div class="container">
+                <div class="w3agile_newsletter_left">
+                    <h3>Đăng ký nhận bản tin của chúng tôi</h3>
+                </div>
+                <div class="w3agile_newsletter_right">
+                    <form action="#" method="post">
+                        <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                        <input type="submit" value="Theo dõi ngay">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- //newsletter -->
+        <!-- footer -->
+        <div class="footer">
+            @{ Html.RenderAction("Footer", "Home");}
+        </div>
+        <!-- //footer -->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/Assets/client/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".dropdown").hover(
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                        $(this).toggleClass('open');
+                    },
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                        $(this).toggleClass('open');
+                    }
+                );
+            });
+        </script>
+        <!-- here stars scrolling icon -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+        </script>
+        <!-- //here ends scrolling icon -->
+        <script src="~/Assets/client/js/minicart.js"></script>
+        <script>
+            paypal.minicart.render();
+
+            paypal.minicart.cart.on('checkout', function (evt) {
+                var items = this.items(),
+                    len = items.length,
+                    total = 0,
+                    i;
+
+                // Count the number of each item in the cart
+                for (i = 0; i < len; i++) {
+                    total += items[i].get('quantity');
+                }
+
+                if (total < 1) {
+                    alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                    evt.preventDefault();
+                }
+            });
+        </script>
+    @RenderSection("jsFooter", required: false)
+</body>
+</html>

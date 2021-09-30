@@ -1,0 +1,9 @@
+﻿@model List<Model.EF.ProductCategory>
+
+    <ul class="nav navbar-nav nav_1">
+        <h3 style="color:brown">DANH MỤC SẢN PHẨM</h3>
+        @foreach (var item in Model)
+        {
+            <li><a href="/san-pham/@item.MetaTitle-@item.ID">@item.Name</a></li>
+        }
+    </ul>

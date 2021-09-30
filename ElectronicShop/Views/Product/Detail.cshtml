@@ -1,0 +1,230 @@
+﻿@model Model.EF.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Model.EF.ProductCategory)ViewBag.Category;
+    var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
+}
+<hr />
+<div class="men">
+    <div class="container">
+        <div class="col-md-9 single_top" style="margin-bottom:50px">
+            <div class="single_left">
+                <div class="labout span_1_of_a1">
+                    <div class="flexslider">
+                        <ul class="slides">  
+                            <li>
+                                <img src="@Model.Image" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
+                    <h1>@Model.Name</h1>
+                    <div class="price_single">
+                        <span class="reducedfrom">@(Model.PromotionPrice.HasValue? Model.PromotionPrice.Value.ToString("N0") : "Liên hệ")</span>
+                        <span class="amount item_price actual">@(Model.Price.HasValue? Model.Price.Value.ToString("N0") : "Liên hệ")</span>
+                    </div>
+                    <h2 class="quick">Thông tin cơ bản</h2>
+                    <p class="quick_desc"> @Model.Description</p>
+                    <div class="quantity_box">
+                        <ul class="product-qty">
+                            <span>Số lượng:</span>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </ul>
+                        <ul class="single_social">
+                            <li><a href="#"><i class="fb1"> </i> </a></li>
+                            <li><a href="#"><i class="tw1"> </i> </a></li>
+                            <li><a href="#"><i class="g1"> </i> </a></li>
+                            <li><a href="#"><i class="linked"> </i> </a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    @*<a href="#" class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1" target="_self">Add to cart</a>*@
+                <div class="snipcart-details agileinfo_single_right_details">
+                    <a href="/them-gio-hang?productId=@Model.ID&quantity=1">
+                        <fieldset>
+                            <input type="hidden" name="cmd" value="_cart" />
+                            <input type="hidden" name="add" value="1" />
+                            <input type="hidden" name="business" value=" " />
+                            <input type="hidden" name="item_name" value="@Model.Name" />
+                            <input type="hidden" name="amount" value="@Model.Price" />
+                            <input type="hidden" name="discount_amount" value="@Model.PromotionPrice" />
+                            <input type="hidden" name="currency_code" value="VND" />
+                            <input type="hidden" name="return" value=" " />
+                            <input type="hidden" name="cancel_return" value=" " />
+                            <input type="submit" name="submit" value="Thêm vào giỏ" class="button" />
+                        </fieldset>
+                     </a>
+                </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="sap_tabs">
+                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <ul class="resp-tabs-list">
+                        <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Mô tả sản phẩm</span></li>
+                        <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Đặc điểm nổi bật</span></li>
+                        <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Thông tin bảo hành</span></li>
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                            <div class="facts">
+                                <ul class="tab_list">
+                                    <li>@Html.Raw(Model.Detail)</li>
+                                </ul>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 tabs">
+            <h3 class="m_1">Sản phẩm gợi ý</h3>
+            @foreach (var item in relatedProducts)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <ul class="product">
+                    <li class="product_img"><img src="@item.Image" class="img-responsive" alt="" /></li>
+                    <li class="product_desc">
+                        <h4><a href="@url">@item.Name</a></h4>
+                        <p class="single_price">@(item.Price.HasValue?item.Price.Value.ToString("N0"): "Liên hệ")</p>
+                        <div class="snipcart-details">
+                            <a href="/them-gio-hang?productId=@item.ID&quantity=1">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart" />
+                                    <input type="hidden" name="add" value="1" />
+                                    <input type="hidden" name="business" value=" " />
+                                    <input type="hidden" name="item_name" value="@item.Name" />
+                                    <input type="hidden" name="amount" value="@item.Price" />
+                                    <input type="hidden" name="discount_amount" value="@item.PromotionPrice" />
+                                    <input type="hidden" name="currency_code" value="VND" />
+                                    <input type="hidden" name="return" value=" " />
+                                    <input type="hidden" name="cancel_return" value=" " />
+                                    <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                </fieldset>
+                                </a>
+                        </div>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+            }
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<!-- banner -->
+<!--<div class="banner">
+    <div class="w3l_banner_nav_right">
+        <div class="agileinfo_single">
+            <h5>@Model.Name</h5>
+            <div class="col-md-4 agileinfo_single_left">
+                <img id="example" src="@Model.Image" alt=" " class="img-responsive" />
+            </div>
+            <div class="col-md-8 agileinfo_single_right">
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked>
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <div class="w3agile_description">
+                    <h4>@Model.Description</h4>
+                    <p>
+                        @Html.Raw(Model.Detail)
+                    </p>
+                </div>
+                <div class="snipcart-item block">
+                    <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                        <h4>@(Model.Price.HasValue? Model.Price.Value.ToString("N0") : "Liên hệ")</h4>
+                    </div>
+                    <div class="snipcart-details agileinfo_single_right_details">
+                        <form action="#" method="post">
+                            <fieldset>
+                                <input type="hidden" name="cmd" value="_cart" />
+                                <input type="hidden" name="add" value="1" />
+                                <input type="hidden" name="business" value=" " />
+                                <input type="hidden" name="item_name" value="@Model.Name" />
+                                <input type="hidden" name="amount" value="@Model.Price" />
+                                <input type="hidden" name="discount_amount" value="@Model.PromotionPrice" />
+                                <input type="hidden" name="currency_code" value="VND" />
+                                <input type="hidden" name="return" value=" " />
+                                <input type="hidden" name="cancel_return" value=" " />
+                                <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>-->
+<!-- //banner -->
+<!-- brands -->
+<!--<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
+    <div class="container">
+        <h3>Sản phẩm liên quan</h3>
+        <div class="w3ls_w3l_banner_nav_right_grid1">
+            @foreach (var item in relatedProducts)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="col-md-3 w3ls_w3l_banner_left">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                            <div class="agile_top_brand_left_grid_pos">
+                                <img src="~/Assets/client/images/offer.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="@url"><img title=" " alt="" src="@item.Image" /></a>
+                                            <p>@item.Name</p>
+                                            <h4>@(item.Price.HasValue?item.Price.Value.ToString("N0"): "Liên hệ")</h4>
+                                        </div>
+                                        <div class="snipcart-details">
+                                            <form action="#" method="post">
+                                                <fieldset>
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="business" value=" " />
+                                                    <input type="hidden" name="item_name" value="@item.Name" />
+                                                    <input type="hidden" name="amount" value="@item.Price" />
+                                                    <input type="hidden" name="discount_amount" value="@item.PromotionPrice" />
+                                                    <input type="hidden" name="currency_code" value="VND" />
+                                                    <input type="hidden" name="return" value=" " />
+                                                    <input type="hidden" name="cancel_return" value=" " />
+                                                    <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>-->
+<!-- //brands -->

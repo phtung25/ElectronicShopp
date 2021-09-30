@@ -1,0 +1,5 @@
+D:\HK9\ElectronicShop\Common\bin\Debug\Common.dll
+D:\HK9\ElectronicShop\Common\bin\Debug\Common.pdb
+D:\HK9\ElectronicShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\HK9\ElectronicShop\Common\obj\Debug\Common.dll
+D:\HK9\ElectronicShop\Common\obj\Debug\Common.pdb

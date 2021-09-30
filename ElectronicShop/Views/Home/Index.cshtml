@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var slides = (List<Model.EF.Slide>)ViewBag.Slides;
+    var listNewProducts = (List<Model.EF.Product>)ViewBag.NewProducts;
+    var listUuDaiSanPhams = (List<Model.EF.Product>)ViewBag.ListUuDaiSanPhams;
+}
+
+<!-- top-brands -->
+<div class="top-brands">
+    <div class="container">
+        <h3>Sản phẩm mới</h3>
+        <div class="agile_top_brands_grids">
+            @foreach (var item in listNewProducts)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="col-md-3 top_brand_left">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">                       
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="@url"><img title=" " alt="@item.Name" src="@item.Image" class="img-responsive"/></a>
+                                            <p>@item.Name</p>
+                                            <h4>@(item.Price.HasValue?item.Price.Value.ToString("N0"): "Liên hệ")</h4>
+                                        </div>
+                                        @*<div class="add-cart">
+                                            <h4><button class="Button"><a href="/them-gio-hang?productId=@item.ID&quantity=1">Thêm vào giỏ</a></button></h4>
+                                        </div>*@
+                                        
+
+
+                         <div class="snipcart-details top_brand_home_details">
+                             <a href="/them-gio-hang?productId=@item.ID&quantity=1">
+                                 <fieldset>
+                                     <input type="hidden" name="cmd" value="_cart" />
+                                     <input type="hidden" name="add" value="1" />
+                                     <input type="hidden" name="business" value=" " />
+                                     <input type="hidden" name="item_name" value="@item.Name" />
+                                     <input type="hidden" name="amount" value="@item.Price" />
+                                     <input type="hidden" name="discount_amount" value="@item.PromotionPrice" />
+                                     <input type="hidden" name="currency_code" value="VND" />
+                                     <input type="hidden" name="return" value=" " />
+                                     <input type="hidden" name="cancel_return" value=" " />
+                                     <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                 </fieldset>
+                               
+                             </a>
+
+                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+        <hr />
+        <h3>Ưu đãi hấp dẫn</h3>
+        <div class="agile_top_brands_grids">
+            @foreach (var item in listUuDaiSanPhams)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="col-md-3 top_brand_left">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="@url"><img title=" " alt="@item.Name" src="@item.Image" class="img-responsive"/></a>
+                                            <p>@item.Name</p>
+                                            <h4>@(item.Price.HasValue?item.Price.Value.ToString("N0"): "Liên hệ")</h4>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <a href="/them-gio-hang?productId=@item.ID&quantity=1">
+                                                <fieldset>
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="business" value=" " />
+                                                    <input type="hidden" name="item_name" value="@item.Name" />
+                                                    <input type="hidden" name="amount" value="@item.Price" />
+                                                    <input type="hidden" name="discount_amount" value="@item.PromotionPrice" />
+                                                    <input type="hidden" name="currency_code" value="VND" />
+                                                    <input type="hidden" name="return" value=" " />
+                                                    <input type="hidden" name="cancel_return" value=" " />
+                                                    <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                                </fieldset>
+                                                </a>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //top-brands -->
